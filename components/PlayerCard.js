@@ -1,27 +1,36 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
-  StyleSheet,
-  View,
   Text,
 } from 'react-native';
+import styled from 'styled-components';
 
-const styles = StyleSheet.create({
-  card: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: 'green',
-    width: '100%'
-  },
-});
+const colorOptions = {
+  0: '#FF7043',
+  1: '#8D6E63',
+  2: '#5C6BC0',
+  3: '#66BB6A',
+  4: '#78909C',
+  5: '#AB47BC',
+  6: '#FFA726',
+  7: '#BDBDBD',
+};
 
-const PlayerCard = ({ playerIndex }) => {
-  const [playerName, setPlayerName] = useState(`Player ${playerIndex + 1}`);
+const Card = styled.View`
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  backgroundColor: ${({ index }) => colorOptions[index]};
+  width: 100%;
+  height: 100%;
+`;
+
+const PlayerCard = ({ name, life, index }) => {
 
   return (
-    <View style={styles.card}>
-      <Text>{playerName}</Text>
-    </View>
+    <Card index={index}>
+      <Text>{name}</Text>
+      <Text>{life}</Text>
+    </Card>
   );
 };
 
