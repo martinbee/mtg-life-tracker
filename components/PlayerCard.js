@@ -1,8 +1,11 @@
 import React from 'react';
 import {
   Text,
+  Dimensions,
 } from 'react-native';
 import styled from 'styled-components';
+
+const { width } = Dimensions.get('window');
 
 const colorOptions = {
   0: '#FF7043',
@@ -17,17 +20,17 @@ const colorOptions = {
 
 const Card = styled.View`
   flex: 1;
+  flex-basis: ${width / 2}px;
   justify-content: center;
   align-items: center;
   backgroundColor: ${({ index }) => colorOptions[index]};
-  width: 100%;
-  height: 100%;
+  height: ${({ cardHeight }) => cardHeight}px;
 `;
 
-const PlayerCard = ({ name, life, index }) => {
+const PlayerCard = ({ name, life, index, cardHeight }) => {
 
   return (
-    <Card index={index}>
+    <Card index={index} cardHeight={cardHeight}>
       <Text>{name}</Text>
       <Text>{life}</Text>
     </Card>
