@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {
   Text,
   Dimensions,
@@ -18,6 +18,9 @@ const colorOptions = {
   7: '#BDBDBD',
 };
 
+  // transform: [
+  //   { rotateY: '60deg'},
+  // ];
 const Card = styled.View`
   flex: 1;
   flex-basis: ${width / 2}px;
@@ -27,12 +30,24 @@ const Card = styled.View`
   height: ${({ cardHeight }) => cardHeight}px;
 `;
 
+const ContentContainer = styled.View`
+  transform: rotate(${({ cardRotation }) => cardRotation});
+`;
+
+// handle odd player total rotation
+
 const PlayerCard = ({ name, life, index, cardHeight }) => {
+  const isIndexEven = index % 2 === 0;
+  const initialRotation = isIndexEven ? '90deg' : '-90deg';
+  const [cardRotation, setCardRotation] = useState(initialRotation);
 
   return (
     <Card index={index} cardHeight={cardHeight}>
-      <Text>{name}</Text>
-      <Text>{life}</Text>
+      <ContentContainer cardRotation={cardRotation}>
+        <Text>{name}</Text>
+        <Text>{life}</Text>
+        <Text>{cardRotation}</Text>
+      </ContentContainer>
     </Card>
   );
 };
