@@ -28,3 +28,35 @@ This is meant to be a the basis for an MTG life tracking app. This is a hobby pr
   - If total life is clicked, ability to set total life
   - Color setting?
   - Rotation setting
+
+## Layout
+
+### App: 
+- has player and settings context setup
+- Settings
+- Players
+
+### Settings
+- renders buttons
+- disables add player button when players is a certain length
+- can set initial life total and initial number of players
+- can reset current game 
+- uses modal
+
+### Players
+- renders player cards
+- displays player info
+- can set player life total
+- can set player poison counter total
+- can set player commander damage by color
+- all of this uses modal
+
+## TODO
+
+- ~Set up initial app~
+- ~Prove out rotation and player cards~
+- ~Add settings icons~
+- Add contexts
+  - Add settings context
+  - Add players context 
+- Add player card modal ui
