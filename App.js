@@ -6,6 +6,8 @@ import {
 import styled from 'styled-components';
 
 import PlayerCard from './components/PlayerCard';
+import SettingsModal from './components/SettingsModal';
+import PlayerModal from './components/PlayerModal';
 
 const { width, height } = Dimensions.get('window');
 
@@ -90,8 +92,31 @@ const App = () => {
           />
         );
       })}
+      <SettingsModal isVisible={isSettingsModalOpen} toggleModal={toggleSettingsModal} />
+      <PlayerModal 
+        isVisible={playerModalInfo} 
+        toggleModal={togglePlayerModal} 
+      />
     </AppContainer>
   );
 };
 
 export default App;
+
+// top level: 
+// has player and settings context setup
+// - Settings
+// - Players
+// Settings
+// - renders buttons
+// - disables add player button when players is a certain length
+// - can set initial life total and initial number of players
+// - can reset current game 
+// - uses modal
+// Players
+// - renders player cards
+// - displays player info
+// - can set player life total
+// - can set player poison counter total
+// - can set player commander damage by color
+// - all of this uses modal
