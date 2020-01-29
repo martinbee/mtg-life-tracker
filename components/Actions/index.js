@@ -1,6 +1,10 @@
 import React, { useState, useCallback } from 'react';
 import styled from 'styled-components';
 import { TouchableOpacity } from 'react-native';
+import { 
+  Ionicons,
+  FontAwesome,
+} from '@expo/vector-icons';
 
 import SettingsModal from './SettingsModal';
 
@@ -32,11 +36,6 @@ const ActionsContainer = styled.View`
   z-index: 1;
 `;
 
-const ActionIcon = styled.Image`
-  height: 50px;
-  width: 50px;
-`;
-
 const Actions = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const toggleModal = useCallback(
@@ -51,10 +50,15 @@ const Actions = () => {
     <>
       <ActionsContainer>
         <TouchableOpacity onPress={toggleModal}>
-          <ActionIcon source={require('@assets/settings.png')} />
+          <Ionicons name="md-settings" size={42} color="#263238" />
         </TouchableOpacity>
         <TouchableOpacity onPress={addNewPlayer} disabled={atMaxPlayers}>
-          <ActionIcon source={require('@assets/add-player.png')} />
+          <FontAwesome 
+            name="user-plus" 
+            size={32} 
+            color={atMaxPlayers ? '#9E9E9E' : '#263238'}
+            style={{ paddingLeft: 5 }} 
+          />
         </TouchableOpacity>
       </ActionsContainer>
       <SettingsModal 

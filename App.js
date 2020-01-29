@@ -12,7 +12,7 @@ const AppContainer = styled.View`
   justify-content: center;
   align-items: center;
   background-color: #F5FCFF;
-  maxWidth: ${width}px;
+  max-width: ${width}px;
   flex-wrap: wrap;
   flex-direction: row;
 `;
