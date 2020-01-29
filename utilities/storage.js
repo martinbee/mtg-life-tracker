@@ -1,6 +1,10 @@
-import AsyncStorageFactory from '@react-native-community/async-storage';
-import LegacyStorage from '@react-native-community/async-storage-backend-legacy';
+import { AsyncStorage } from 'react-native';
 
-const legacyStorage = new LegacyStorage();
-
-export default AsyncStorageFactory.create(legacyStorage);
+export default {
+  async get(key) {
+    return await AsyncStorage.getItem(key);
+  },
+  async set(key, value) {
+    return await AsyncStorage.setItem(key, value);
+  },
+};

@@ -7,8 +7,6 @@
     "test": "jest"
   },
   "dependencies": {
-    "@react-native-community/async-storage": "^2.0.0-rc.1",
-    "@react-native-community/async-storage-backend-legacy": "^2.0.0-rc.1",
     "expo": "~36.0.0",
     "react": "~16.9.0",
     "react-dom": "~16.9.0",

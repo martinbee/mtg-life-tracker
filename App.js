@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Dimensions } from 'react-native';
 import styled from 'styled-components';
 
+import storage from '@utilities/storage';
 import Actions from '@components/Actions';
 import Players from '@components/Players';
 
@@ -17,12 +18,29 @@ const AppContainer = styled.View`
   flex-direction: row;
 `;
 
-const App = () => (
-  <AppContainer>
-    <Actions />
-    <Players />
-  </AppContainer>
-);
+const defaultStartingLifeTotal = '40';
+const defaultStartingNumberOfPlayers = '2';
+
+const App = () => {
+  useEffect(() => {
+    const setDefaultSettings = async () => {
+      const startingLifeTotal = await storage.get('startingLifeTotal');
+      const startingNumberOfPlayers = await storage.get('startingNumberOfPlayers');
+
+      if (!startingLifeTotal) await storage.set('startingLifeTotal', defaultStartingLifeTotal);
+      if (!startingNumberOfPlayers) await storage.set('startingNumberOfPlayers', defaultStartingNumberOfPlayers);
+    };
+
+    setDefaultSettings();
+  }, []);
+
+  return (
+    <AppContainer>
+      <Actions />
+      <Players />
+    </AppContainer>
+  );
+};
 
 export default App;
 
